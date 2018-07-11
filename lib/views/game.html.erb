@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/stylesheets/application.css">
+
+    <title>Codebreaker</title>
+  </head>
+  <body>
+    <h1>Codebreaker</h1>
+
+    <div class="content_wrapper">
+      <h2>Game</h2>
+
+      <p>Secret code was generated.<br>
+      It is your turn. Choose 'Submit guess' to make a guess (must include four digits in the range from 1 to 6! elsewise it will be rejected).<br><br>
+
+      NOTE 1: If you go to main menu or exit your current game will be lost.<br>
+      NOTE 2: Use hint to open one digit from secret code.</p>
+      <hr>
+
+      <p class="turns">Turns left: <%= @game.turns %></p>
+
+      <% if @attempts.any? && @attempts.last[:guess_result][:exact_hits] == 4 %>
+        <h3 class="won_msg">You won! Congrats!</h3>
+        <p>Enter your name:</p>
+        <form class="enter_name" method="post" action="/enter_name">
+          <input name="name" type="text" placeholder="John Doe"><br>
+          <input type="submit" value="Confirm">
+        </form>
+      <% elsif @game.turns.zero? %>
+        <h3 class="lost_msg">You lost... Try again</h3>
+      <% else %>
+        <p>Enter your guess:</p>
+        <form class="submit_guess" method="post" action="/submit_guess">
+          <input name="guess" type="text" placeholder="****"><br>
+          <input type="submit" value="Submit guess">
+        </form>
+
+        <form class="show_hint" method="post" action="/show_hint">
+          <input type="submit" value="Hint ❗">
+        </form>
+
+        <% if @show_hint %>
+          <p class="hint"><%= @hint %></p>
+        <% end %>
+      <% end %>
+
+      <% %i[notice error].each do |key| %>
+        <% if @flash[key] %>
+          <div class="flash flash_<%= key %>">
+            <%= @flash[key] %>
+          </div>
+          <% @flash[key] = nil %>
+        <% end %>
+      <% end %>
+
+      <% unless @attempts.empty? %>
+        <table class='attemtps'>
+          <th colspan="2">Attempts</th>
+          <% @attempts.each do |attemtp| %>
+            <tr>
+              <td><%= attemtp[:guess] %></td>
+              <td><%= '+' * attemtp[:guess_result][:exact_hits] + '-' * attemtp[:guess_result][:part_hits] %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
+      
+      <a class="btn btn_back" href="/">Main menu</a>
+    </div>
+
+    <script>
+
+    </script>
+  </body>
+</html>

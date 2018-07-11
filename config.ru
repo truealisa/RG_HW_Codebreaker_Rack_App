@@ -1,7 +1,6 @@
-class Racker
-  def call(env)
-    [200, { 'Content-Type' => 'text/plain' }, ['Something happens!']]
-  end
-end
+require 'codebreaker_app'
 
-run Racker.new
+use Rack::Reloader, 0
+use Rack::Static, :urls => ["/stylesheets"], :root => "public"
+
+run CodebreakerApp.new

@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/truealisa/rg_hw_codebreaker
-  revision: 8793b6d59e3bdc814b097eb1bfb051d560e04c8b
+  revision: 97cf3d0112903d87e4797fb1aa46d8756c94680a
   branch: feature/codebreaker_game
   specs:
     rg_hw_codebreaker (0.1.0)
