@@ -20,21 +20,21 @@
       NOTE 2: Use hint to open one digit from secret code.</p>
       <hr>
 
-      <p class="turns">Turns left: <%= @game.turns %></p>
+      <p class="turns">Turns left: <%= @request.session[:game].turns %></p>
 
-      <% if @attempts.any? && @attempts.last[:guess_result][:exact_hits] == 4 %>
+      <% if @request.session[:attempts].any? && @request.session[:attempts].last[:guess_result][:exact_hits] == 4 %>
         <h3 class="won_msg">You won! Congrats!</h3>
         <p>Enter your name:</p>
         <form class="enter_name" method="post" action="/enter_name">
-          <input name="name" type="text" placeholder="John Doe"><br>
+          <input name="name" type="text" placeholder="John Doe" autofocus><br>
           <input type="submit" value="Confirm">
         </form>
-      <% elsif @game.turns.zero? %>
+      <% elsif @request.session[:game].turns.zero? %>
         <h3 class="lost_msg">You lost... Try again</h3>
       <% else %>
         <p>Enter your guess:</p>
         <form class="submit_guess" method="post" action="/submit_guess">
-          <input name="guess" type="text" placeholder="****"><br>
+          <input name="guess" type="text" placeholder="****" autofocus><br>
           <input type="submit" value="Submit guess">
         </form>
 
@@ -42,24 +42,24 @@
           <input type="submit" value="Hint ❗">
         </form>
 
-        <% if @show_hint %>
-          <p class="hint"><%= @hint %></p>
+        <% if @request.session[:show_hint] %>
+          <p class="hint"><%= @request.session[:hint] %></p>
         <% end %>
       <% end %>
-
-      <% %i[notice error].each do |key| %>
-        <% if @flash[key] %>
+      
+      <% %i[notice_msg error_msg].each do |key| %>
+        <% if @request.session[key] %>
           <div class="flash flash_<%= key %>">
-            <%= @flash[key] %>
+            <%= @request.session[key] %>
           </div>
-          <% @flash[key] = nil %>
+          <% @request.session[key] = nil %>
         <% end %>
       <% end %>
 
-      <% unless @attempts.empty? %>
+      <% unless @request.session[:attempts].empty? %>
         <table class='attemtps'>
-          <th colspan="2">Attempts</th>
-          <% @attempts.each do |attemtp| %>
+          <th class="table_header" colspan="2">Attempts</th>
+          <% @request.session[:attempts].each do |attemtp| %>
             <tr>
               <td><%= attemtp[:guess] %></td>
               <td><%= '+' * attemtp[:guess_result][:exact_hits] + '-' * attemtp[:guess_result][:part_hits] %></td>

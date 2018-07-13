@@ -13,9 +13,24 @@
     <div class="content_wrapper">
       <h2>Best results</h2>
 
+      <% %i[notice_msg error_msg].each do |key| %>
+        <% if @request.session[key] %>
+          <div class="flash flash_<%= key %>">
+            <%= @request.session[key] %>
+          </div>
+          <% @request.session[key] = nil %>
+        <% end %>
+      <% end %>
+
       <% results = YAML.load(RgHwCodebreaker::Cli.new.load_results_file) %>
+      <% table_header = results.shift %>
       <table class='results'>
-        <% results.each do |result_record| %>
+        <tr class="table_header">
+          <% table_header.each do |col| %>
+            <td><%= col %></td>
+          <% end %>
+        </tr>
+        <% results.sort_by(&:last).each do |result_record| %>
           <tr>
             <% result_record.each do |col| %>
               <td><%= col %></td>

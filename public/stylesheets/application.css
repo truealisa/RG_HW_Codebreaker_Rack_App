@@ -36,6 +36,11 @@ table td {
     border: 1px solid #000;
 }
 
+.table_header {
+    background-color: #ccc;
+    font-weight: bold;
+}
+
 .content_wrapper {
     max-width: 800px;
     margin: auto;
@@ -74,11 +79,11 @@ table td {
     border: 1px solid black;
 }
 
-.flash_error {
+.flash_error_msg {
     background-color: #ff8888;
 }
 
-.flash_notice {
+.flash_notice_msg {
     background-color: #92d892;
 }
 
