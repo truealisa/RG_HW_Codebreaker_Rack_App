@@ -8,14 +8,19 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    puma (3.12.0)
     rack (2.0.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  puma
   rack
   rg_hw_codebreaker!
+
+RUBY VERSION
+   ruby 2.5.1p57
 
 BUNDLED WITH
    1.16.2
