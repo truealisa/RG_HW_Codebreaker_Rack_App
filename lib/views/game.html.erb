@@ -26,7 +26,7 @@
         <h3 class="won_msg">You won! Congrats!</h3>
         <p>Enter your name:</p>
         <form class="enter_name" method="post" action="/enter_name">
-          <input name="name" type="text" placeholder="John Doe" autofocus><br>
+          <input name="name" type="text" placeholder="John Doe" autofocus required><br>
           <input type="submit" value="Confirm">
         </form>
       <% elsif @request.session[:game].turns.zero? %>
@@ -34,7 +34,7 @@
       <% else %>
         <p>Enter your guess:</p>
         <form class="submit_guess" method="post" action="/submit_guess">
-          <input name="guess" type="text" placeholder="****" autofocus><br>
+          <input name="guess" type="text" placeholder="****" autofocus required><br>
           <input type="submit" value="Submit guess">
         </form>
 
