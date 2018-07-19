@@ -22,15 +22,13 @@
         <% end %>
       <% end %>
 
-      <% results = YAML.load(RgHwCodebreaker::Cli.new.load_results_file) %>
-      <% table_header = results.shift %>
       <table class='results'>
         <tr class="table_header">
-          <% table_header.each do |col| %>
+          <% @results_table_header.each do |col| %>
             <td><%= col %></td>
           <% end %>
         </tr>
-        <% results.sort_by(&:last).each do |result_record| %>
+        <% @results.sort_by(&:last).each do |result_record| %>
           <tr>
             <% result_record.each do |col| %>
               <td><%= col %></td>

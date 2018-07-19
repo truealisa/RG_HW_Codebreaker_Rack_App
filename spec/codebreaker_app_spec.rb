@@ -31,6 +31,15 @@ RSpec.describe CodebreakerApp do
 
     specify { expect(last_response).to be_ok }
 
+    it 'loads saved best results' do
+      allow(YAML).to receive(:load).and_return([%w[Player Date Turns]])
+
+      expect(YAML).to receive(:load)
+      expect(RgHwCodebreaker::ResultsAccessor).to receive(:load_results_file)
+
+      get '/best_results'
+    end
+
     it 'renders best_results.html.erb template' do
       expect(last_response.body).to include(ERB.new('lib/views/best_results.html.erb').result
         .gsub('lib/views/best_results.html.erb', ''))

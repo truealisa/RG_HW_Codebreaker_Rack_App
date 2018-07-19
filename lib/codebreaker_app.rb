@@ -17,7 +17,9 @@ class CodebreakerApp
       @request.session.clear
       Rack::Response.new(render('index.html.erb'))
     when '/help' then Rack::Response.new(render('help.html.erb'))
-    when '/best_results' then Rack::Response.new(render('best_results.html.erb'))
+    when '/best_results'
+      load_results
+      Rack::Response.new(render('best_results.html.erb'))
     when '/game'
       start_game unless @request.session[:game]
       Rack::Response.new(render('game.html.erb'))
@@ -41,6 +43,11 @@ class CodebreakerApp
     ERB.new(File.read(path)).result(binding)
   end
 
+  def load_results
+    @results = YAML.load(RgHwCodebreaker::ResultsAccessor.load_results_file)
+    @results_table_header = @results.shift
+  end
+
   def start_game
     @request.session[:game] = RgHwCodebreaker::Game.new
     @request.session[:game].start
@@ -59,7 +66,7 @@ class CodebreakerApp
 
   def enter_name(player_name)
     current_result = [player_name, Date.today, 10 - @request.session[:game].turns]
-    RgHwCodebreaker::Cli.new.write_result_to_file(current_result)
+    RgHwCodebreaker::ResultsAccessor.write_result_to_file(current_result)
     @request.session[:notice_msg] = 'Your result saved'
   end
 
