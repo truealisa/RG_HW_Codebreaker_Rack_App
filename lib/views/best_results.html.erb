@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/stylesheets/application.css">
+
+    <title>Codebreaker</title>
+  </head>
+  <body>
+    <h1>Codebreaker</h1>
+
+    <div class="content_wrapper">
+      <h2>Best results</h2>
+
+      <% %i[notice_msg error_msg].each do |key| %>
+        <% if @request.session[key] %>
+          <div class="flash flash_<%= key %>">
+            <%= @request.session[key] %>
+          </div>
+          <% @request.session[key] = nil %>
+        <% end %>
+      <% end %>
+
+      <table class='results'>
+        <tr class="table_header">
+          <% @results_table_header.each do |col| %>
+            <td><%= col %></td>
+          <% end %>
+        </tr>
+        <% @results.sort_by(&:last).each do |result_record| %>
+          <tr>
+            <% result_record.each do |col| %>
+              <td><%= col %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </table>
+      <a class="btn btn_back" href="/">Main menu</a>
+    </div>
+  </body>
+</html>

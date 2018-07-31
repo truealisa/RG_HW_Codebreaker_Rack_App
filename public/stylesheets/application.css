@@ -1,0 +1,149 @@
+/* COMMON STYLES */
+
+body {
+    background-color: #c2d2e9;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    margin-top: 45px;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #091d36;
+}
+
+h2 {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+p {
+    margin: 10px;
+}
+
+table {
+    width: 100%;
+    margin-top: 35px;
+    background: #eee;
+    border-collapse: collapse;
+}
+
+table,
+table tr,
+table td {
+    border: 1px solid #000;
+}
+
+.table_header {
+    background-color: #ccc;
+    font-weight: bold;
+}
+
+.content_wrapper {
+    max-width: 800px;
+    margin: auto;
+    text-align: center;
+    font-size: 18px;
+}
+
+.btn {
+    display: block;
+    width: 320px;
+    margin-top: 40px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background-color: #5e83ba;
+    border: 2px solid #091d36;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 27px;
+    color: #091d36;
+}
+
+.btn:hover {
+    box-shadow: 0 0 3px 1px #3a4e7a;
+    color: #f1f1f0;
+}
+
+.btn_back {
+    margin: 20px auto;
+}
+
+.flash {
+    width: 320px;
+    margin: 0 auto 30px;
+    line-height: 30px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.flash_error_msg {
+    background-color: #ff8888;
+}
+
+.flash_notice_msg {
+    background-color: #92d892;
+}
+
+/* HOME PAGE */
+
+.menu {
+    margin: auto;
+    margin-top: 80px;
+    width: 320px;
+    padding-left: 0;
+}
+
+.menu li {
+    list-style: none;
+}
+
+/* HELP PAGE */
+
+.help {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* GAME PAGE */
+
+form {
+    display: block;
+}
+
+form.submit_guess {
+    margin-top: 20px;
+}
+
+form.show_hint,
+form.enter_name {
+    margin-bottom: 30px;
+}
+
+input[type="text"] {
+    width: 106px;
+}
+
+input[type="submit"] {
+    width: 116px;
+}
+
+.won_msg {
+    line-height: 30px;
+    background-color: #92d892;
+    border: 1px solid #338833;
+}
+
+.lost_msg {
+    line-height: 30px;
+    background-color: #ff8888;
+    border: 1px solid #ff1d1d;
+}
+
+.hint {
+    line-height: 30px;
+    background-color: #ffed88;
+    border: 1px solid #fbff1d;
+}

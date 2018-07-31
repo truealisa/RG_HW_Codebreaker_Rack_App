@@ -1,0 +1,52 @@
+GIT
+  remote: https://github.com/truealisa/rg_hw_codebreaker
+  revision: 4eb38fcd819a9bbf18986ad7b3e691a2801f776d
+  branch: feature/codebreaker_game
+  specs:
+    rg_hw_codebreaker (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    diff-lcs (1.3)
+    docile (1.3.1)
+    json (2.1.0)
+    puma (3.12.0)
+    rack (2.0.5)
+    rack-test (1.0.0)
+      rack (>= 1.0, < 3)
+    rspec (3.7.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
+    rspec-core (3.7.1)
+      rspec-support (~> 3.7.0)
+    rspec-expectations (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-mocks (3.7.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.7.0)
+    rspec-support (3.7.1)
+    simplecov (0.16.1)
+      docile (~> 1.1)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  puma
+  rack
+  rack-test
+  rg_hw_codebreaker!
+  rspec
+  simplecov
+
+RUBY VERSION
+   ruby 2.5.1p57
+
+BUNDLED WITH
+   1.16.2
